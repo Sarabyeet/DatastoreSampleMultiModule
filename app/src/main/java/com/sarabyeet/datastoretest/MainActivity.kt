@@ -22,12 +22,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun init() {
         settings = SettingsHelper(this)
+        getFromSettings()
     }
 
     private fun setListeners() {
         with(binding) {
-            getSettings.setOnClickListener { saveToSettings() }
-            saveSettings.setOnClickListener { getFromSettings() }
+            getSettings.setOnClickListener { getFromSettings() }
+            saveSettings.setOnClickListener { saveToSettings() }
             reset.setOnClickListener { reset() }
         }
     }
