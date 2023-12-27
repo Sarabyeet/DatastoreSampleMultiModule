@@ -6,12 +6,18 @@ import androidx.lifecycle.lifecycleScope
 import com.sarabyeet.datastoretest.databinding.ActivityMainBinding
 import com.sarabyeet.settings.Constants
 import com.sarabyeet.settings.SettingsHelper
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private lateinit var settings: SettingsHelper
+
+    @Inject
+    lateinit var settings: SettingsHelper
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -21,7 +27,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun init() {
-        settings = SettingsHelper(this)
         getFromSettings()
     }
 
